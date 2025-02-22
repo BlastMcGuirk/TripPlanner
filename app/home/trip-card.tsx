@@ -1,10 +1,13 @@
-import { redirect, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 import type { Trip } from "~/dto/trip"
 
 export interface TripCardProps {
     trip: Trip
 }
 
+/**
+ * Card to show meta-data for a trip.
+ */
 export default function TripCard(props: TripCardProps) {
     let navigate = useNavigate();
 

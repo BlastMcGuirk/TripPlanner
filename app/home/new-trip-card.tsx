@@ -1,6 +1,9 @@
-import { getAllFiles, createTrip } from "~/apis/drive/drive-api";
+import { createTrip } from "~/apis/drive/drive-api";
 import { useAuth } from "~/utils/auth-context";
 
+/**
+ * Card to create a new trip.
+ */
 export default function NewTripCard() {
     const { userToken } = useAuth();
     return (

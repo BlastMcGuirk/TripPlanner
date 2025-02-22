@@ -4,17 +4,18 @@ import NewTripCard from "./new-trip-card"
 import CardGrid from "./card-grid"
 import { useAuth } from "~/utils/auth-context"
 import { useEffect, useState } from "react"
-import { getAllFiles } from "~/apis/drive/drive-api"
+import { getAllTrips } from "~/apis/drive/drive-api"
 
 export default function Home() {
     var { userToken } = useAuth();
     var [loading, setLoading] = useState(true);
     var [trips, setTrips] = useState<Trip[]>([]);
 
+    // Load all the trips when the auth token changes (loads, login, etc.)
     useEffect(() => {
         if (userToken) {
             setLoading(true);
-            getAllFiles(userToken)
+            getAllTrips(userToken)
                 .then(t => {
                     setTrips(t);
                     setLoading(false);

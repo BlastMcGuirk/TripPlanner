@@ -3,6 +3,9 @@ import HomeIcon from "./HomeIcon.png";
 import HomeIconDark from "./HomeIconDark.png";
 import { useAuth } from "~/utils/auth-context";
 
+/**
+ * Top app bar to navigate home or login/logout.
+ */
 export default function AppBar() {
     const { login, userToken, logout } = useAuth();
     
