@@ -9,6 +9,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import AppBar from "./layouts/app-bar";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { AuthProvider } from "./utils/auth-context";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,9 +36,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <GoogleOAuthProvider clientId="88492702739-5rr285o6kh5b52fp44nkbnhk8bdgfp66.apps.googleusercontent.com">
+          <AuthProvider>
+            <AppBar />
+            {children}
+            <ScrollRestoration />
+            <Scripts />
+          </AuthProvider>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );
